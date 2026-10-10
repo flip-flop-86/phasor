@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="وب‌سایت شخصی، یادداشت‌ها، پروژه‌ها و علایق من">
+<title>امیرعلی | وب‌سایت شخصی</title>
+<style>
+:root{
+  --bg:#0b1220; --panel:#101a2b; --panel2:#132238; --text:#edf4ff;
+  --muted:#a8b7cd; --line:rgba(181,205,238,.14); --accent:#83c5ff;
+  --accent2:#a8e0d5; --shadow:0 18px 55px rgba(0,0,0,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.9}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+.site-shell{max-width:1440px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh}
+.sidebar{background:#0a111d;border-left:1px solid var(--line);padding:30px 22px;display:flex;flex-direction:column;gap:26px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:48px;height:48px;border:1px solid rgba(131,197,255,.45);border-radius:15px;display:grid;place-items:center;color:var(--accent);font-size:23px;background:linear-gradient(145deg,rgba(131,197,255,.13),transparent)}
+.brand-name{font-weight:800;font-size:19px;letter-spacing:-.3px}
+.brand-sub{font-size:12px;color:var(--muted);margin-top:-5px}
+.profile{padding:18px 15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(131,197,255,.08),rgba(19,34,56,.15))}
+.avatar{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,#284765,#15273b);border:1px solid rgba(131,197,255,.28);font-size:29px;color:#d9efff;margin-bottom:13px}
+.profile h2{font-size:17px;margin:0}
+.profile p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.nav{display:grid;gap:7px}
+.nav a{padding:10px 13px;border-radius:11px;color:var(--muted);font-size:14px;transition:.2s;display:flex;gap:11px;align-items:center}
+.nav a:hover,.nav a.active{background:var(--panel2);color:var(--text)}
+.nav .nav-icon{width:22px;text-align:center;color:var(--accent)}
+.sidebar-note{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px}
+.socials{display:flex;gap:9px;margin-top:auto;flex-wrap:wrap}
+.socials a{border:1px solid var(--line);border-radius:10px;padding:6px 10px;color:var(--muted);font-size:12px}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+main{min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px clamp(20px,5vw,64px);border-bottom:1px solid var(--line)}
+.breadcrumb{font-size:12px;color:var(--muted)}
+.top-actions{display:flex;gap:9px;align-items:center}
+.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:8px 11px}
+.icon-btn:hover{border-color:var(--accent)}
+.hero{padding:clamp(42px,7vw,86px) clamp(20px,5vw,64px);position:relative;overflow:hidden;background:radial-gradient(ellipse at 15% 15%,rgba(70,132,185,.22),transparent 45%),linear-gradient(125deg,#0d1727 5%,#101f32 60%,#0b1220)}
+.hero:after{content:"";position:absolute;left:-80px;bottom:-180px;width:420px;height:420px;border:1px solid rgba(131,197,255,.12);border-radius:50%;box-shadow:0 0 0 35px rgba(131,197,255,.025),0 0 0 75px rgba(131,197,255,.02);pointer-events:none}
+.eyebrow{color:var(--accent);font-size:13px;letter-spacing:.3px}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.35;margin:9px 0 13px;letter-spacing:-1.2px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:#c1cede;max-width:650px;margin:0;font-size:15px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:10px 17px;border:1px solid var(--line);font-size:13px;transition:.2s}
+.btn.primary{background:var(--accent);color:#071321;border-color:var(--accent);font-weight:700}
+.btn.secondary{background:rgba(255,255,255,.025);color:var(--text)}
+.btn:hover{transform:translateY(-2px)}
+.content{padding:0 clamp(20px,5vw,64px) 65px}
+.section{padding-top:38px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:17px}
+.section-head h2{font-size:21px;margin:0}
+.section-head p{font-size:12px;color:var(--muted);margin:2px 0 0}
+.small-link{font-size:12px;color:var(--accent);white-space:nowrap}
+.posts{display:grid;gap:12px}
+.post{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(16,26,43,.66);transition:.2s}
+.post:hover{border-color:rgba(131,197,255,.42);transform:translateY(-2px)}
+.post-art{min-height:112px;border-radius:11px;display:grid;place-items:center;font-size:34px;position:relative;overflow:hidden;background:linear-gradient(135deg,#203e56,#142335)}
+.post-art:after{content:"";position:absolute;width:130px;height:130px;border:1px solid rgba(255,255,255,.12);border-radius:50%;left:-35px;bottom:-75px;box-shadow:0 0 0 20px rgba(255,255,255,.025)}
+.post-body h3{font-size:16px;margin:0 0 5px}
+.post-body p{font-size:13px;color:var(--muted);margin:0 0 10px}
+.meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:11px}
+.tag{background:rgba(131,197,255,.09);color:#a9d9ff;border:1px solid rgba(131,197,255,.13);padding:2px 8px;border-radius:30px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.info-card{border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:18px}
+.card-icon{font-size:23px;margin-bottom:8px}
+.info-card h3{font-size:15px;margin:0 0 5px}
+.info-card p{font-size:12px;color:var(--muted);margin:0}
+.about-box{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
+.about-copy,.fact-box{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}
+.about-copy p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.fact-list{display:grid;gap:12px}
+.fact{display:flex;justify-content:space-between;gap:12px;font-size:12px;border-bottom:1px solid var(--line);padding-bottom:9px}
+.fact:last-child{border:0;padding-bottom:0}
+.fact span:first-child{color:var(--muted)}
+.contact-box{border:1px solid var(--line);border-radius:16px;padding:22px;background:linear-gradient(120deg,rgba(131,197,255,.08),var(--panel))}
+.contact-box p{font-size:13px;color:var(--muted);margin:4px 0 16px}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:20px clamp(20px,5vw,64px);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.search-wrap{display:flex;gap:8px;align-items:center}
+.search-wrap input{width:170px;max-width:42vw;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:8px 11px;font-size:12px;outline:none}
+.search-wrap input:focus{border-color:var(--accent)}
+.empty{color:var(--muted);font-size:13px;padding:20px;border:1px dashed var(--line);border-radius:12px;display:none}
+body.light{--bg:#f1f5fa;--panel:#fff;--panel2:#e5eef8;--text:#172638;--muted:#5e7086;--line:rgba(30,60,90,.15);--accent:#176da8;--accent2:#277b70;--shadow:0 18px 55px rgba(20,50,80,.08)}
+body.light .sidebar{background:#e9f0f7}
+body.light .hero{background:radial-gradient(ellipse at 15% 15%,rgba(70,132,185,.15),transparent 45%),linear-gradient(125deg,#e6f0f9,#dbe8f5)}
+body.light .hero p{color:#3d526a}
+body.light .post{background:#fff}
+body.light .post-art{background:linear-gradient(135deg,#c8e0f3,#e1eaf4)}
+body.light .tag{color:#155d8f;background:#eaf5fd}
+body.light .profile{background:#fff}
+@media(max-width:900px){.site-shell{grid-template-columns:220px minmax(0,1fr)}.sidebar{padding:24px 15px}.grid-3{grid-template-columns:1fr 1fr}.about-box{grid-template-columns:1fr}}
+@media(max-width:680px){.site-shell{display:block}.sidebar{position:relative;top:auto;height:auto;padding:15px 18px;gap:14px;border-left:0;border-bottom:1px solid var(--line)}.brand{justify-content:space-between}.profile{display:none}.nav{display:flex;overflow-x:auto;gap:5px;padding-bottom:2px}.nav a{white-space:nowrap;padding:8px 10px;font-size:12px}.nav .nav-icon{width:auto}.sidebar-note,.socials{display:none}.topbar{padding:14px 18px}.hero{padding:42px 20px}.content{padding:0 18px 45px}.post{grid-template-columns:94px minmax(0,1fr);gap:12px;padding:10px}.post-art{min-height:100px;font-size:27px}.post-body h3{font-size:14px}.post-body p{font-size:12px}.grid-3{grid-template-columns:1fr}.section-head h2{font-size:19px}.search-wrap input{width:125px}.hero h1{font-size:36px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="site-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#home" aria-label="صفحه اصلی">
+      <div class="brand-mark">ا</div>
+      <div><div class="brand-name">امیرعلی</div><div class="brand-sub">وب‌سایت شخصی</div></div>
+    </a>
+    <div class="profile">
+      <div class="avatar">ا</div>
+      <h2>امیرعلی</h2>
+      <p>دانشجوی مهندسی برق<br>علاقه‌مند به فناوری، تاریخ و ایده‌ها</p>
+    </div>
+    <nav class="nav" aria-label="ناوبری اصلی">
+      <a class="active" href="#home"><span class="nav-icon">⌂</span> خانه</a>
+      <a href="#blog"><span class="nav-icon">▤</span> یادداشت‌ها</a>
+      <a href="#about"><span class="nav-icon">◉</span> درباره من</a>
+      <a href="#projects"><span class="nav-icon">⌘</span> پروژه‌ها</a>
+      <a href="#contact"><span class="nav-icon">✉</span> ارتباط</a>
+    </nav>
+    <div class="sidebar-note">«یادگیری، با پرسیدن سؤال‌های بهتر شروع می‌شود.»</div>
+    <div class="socials">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="#contact">ایمیل</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div class="breadcrumb">خانه / فضای شخصی من</div>
+      <div class="top-actions">
+        <div class="search-wrap"><input id="search" type="search" placeholder="جست‌وجو در نوشته‌ها…" aria-label="جست‌وجو در نوشته‌ها"></div>
+        <button class="icon-btn" id="themeToggle" aria-label="تغییر پوسته" title="تغییر پوسته">☼ / ☾</button>
+      </div>
+    </div>
+
+    <section class="hero" id="home">
+      <div class="eyebrow">سلام، به فضای شخصی من خوش آمدی</div>
+      <h1>من امیرعلی هستم؛<br><span>در حال یادگرفتن و ساختن.</span></h1>
+      <p>اینجا جایی است برای ثبت چیزهایی که یاد می‌گیرم، پروژه‌هایی که می‌سازم، ایده‌هایی که دنبال می‌کنم و موضوعاتی که برایم ارزش فکر کردن دارند؛ از مهندسی و برنامه‌نویسی تا تاریخ و کتاب.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="#blog">مطالعه یادداشت‌ها ←</a>
+        <a class="btn secondary" href="#about">بیشتر درباره من</a>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="section" id="blog">
+        <div class="section-head">
+          <div><h2>یادداشت‌های اخیر</h2><p>ایده‌ها، تجربه‌ها و چیزهایی که می‌خواهم ثبت شوند.</p></div>
+          <span class="small-link" id="postCount">۴ نوشته</span>
+        </div>
+        <div class="posts" id="posts">
+          <article class="post" data-search="esp32 embedded freertos الکترونیک میکروکنترلر سیستم نهفته">
+            <div class="post-art" aria-hidden="true">⌁</div>
+            <div class="post-body"><h3>شروع کار با ESP32 و سیستم‌های نهفته</h3><p>یادداشت‌هایی درباره میکروکنترلرها، ارتباطات سخت‌افزاری و ساخت پروژه‌هایی که از نرم‌افزار به دنیای واقعی وصل می‌شوند.</p><div class="meta"><span>۱۴۰۵/۰۷/۱۸</span><span class="tag">الکترونیک</span><span class="tag">یادگیری</span></div></div>
+          </article>
+          <article class="post" data-search="os operating system kernel سیستم عامل کرنل اسمبلی">
+            <div class="post-art" aria-hidden="true">⌘</div>
+            <div class="post-body"><h3>یادگیری سیستم‌عامل از پایه</h3><p>مسیر آشنایی با بوت، کرنل، حافظه، وقفه‌ها و اجزایی که یک سیستم‌عامل را شکل می‌دهند.</p><div class="meta"><span>۱۴۰۵/۰۶/۲۸</span><span class="tag">سیستم‌عامل</span><span class="tag">برنامه‌نویسی</span></div></div>
+          </article>
+          <article class="post" data-search="تاریخ ایران ساسانی پژوهش کتاب تاریخ">
+            <div class="post-art" aria-hidden="true">⌂</div>
+            <div class="post-body"><h3>یادداشت‌هایی درباره تاریخ ایران</h3><p>پرسش‌ها، منابع و برداشت‌های شخصی من از تاریخ؛ با تلاش برای جدا کردن گزارش منابع از تفسیر و حدس.</p><div class="meta"><span>۱۴۰۵/۰۶/۱۵</span><span class="tag">تاریخ</span><span class="tag">مطالعه</span></div></div>
+          </article>
+          <article class="post" data-search="دانشگاه برنامه ریزی مطالعه مهندسی برق ریاضی">
+            <div class="post-art" aria-hidden="true">∑</div>
+            <div class="post-body"><h3>یادگیری مهندسی، قدم‌به‌قدم</h3><p>ثبت مسیر درس‌ها، نکته‌های فنی و راه‌هایی برای فهم دقیق‌تر مفاهیم ریاضی و مهندسی برق.</p><div class="meta"><span>۱۴۰۵/۰۵/۳۰</span><span class="tag">دانشگاه</span><span class="tag">یادگیری</span></div></div>
+          </article>
+        </div>
+        <div class="empty" id="emptyState">نوشته‌ای با این عبارت پیدا نشد.</div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-head"><div><h2>چیزهایی که دنبال می‌کنم</h2><p>موضوعاتی که احتمالاً در این سایت بیشتر درباره‌شان می‌نویسم.</p></div></div>
+        <div class="grid-3">
+          <article class="info-card"><div class="card-icon">⌁</div><h3>الکترونیک و سخت‌افزار</h3><p>میکروکنترلرها، مدارها، سیستم‌های نهفته و ارتباط نرم‌افزار با سخت‌افزار.</p></article>
+          <article class="info-card"><div class="card-icon">⌘</div><h3>برنامه‌نویسی سطح پایین</h3><p>C/C++، اسمبلی، معماری کامپیوتر و کنجکاوی درباره سازوکار سیستم‌عامل‌ها.</p></article>
+          <article class="info-card"><div class="card-icon">▤</div><h3>تاریخ و مطالعه</h3><p>مطالعه منابع، بررسی روایت‌ها و نگهداری یادداشت‌هایی که نمی‌خواهم فراموش کنم.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-head"><div><h2>درباره من</h2><p>معرفی کوتاه؛ این بخش را هر زمان خواستی تغییر بده.</p></div></div>
+        <div class="about-box">
+          <div class="about-copy">
+            <p>من دانشجوی مهندسی برق هستم و به فهمیدن سازوکار چیزها علاقه دارم؛ از اینکه یک مدار چطور کار می‌کند تا اینکه یک برنامه چگونه به سخت‌افزار نزدیک می‌شود.</p>
+            <p>این سایت دفترچه عمومی من است: جایی برای نوشتن آموخته‌ها، ثبت مسیر پروژه‌ها، نگهداری لینک‌های مفید و مرتب کردن فکرها. قرار نیست همه‌چیز کامل باشد؛ مهم این است که مسیر یادگیری ثبت شود.</p>
+            <a class="btn secondary" href="#contact">راه‌های ارتباطی</a>
+          </div>
+          <div class="fact-box">
+            <div class="fact-list">
+              <div class="fact"><span>زمینه تحصیلی</span><strong>مهندسی برق</strong></div>
+              <div class="fact"><span>علایق</span><strong>الکترونیک، کدنویسی، تاریخ</strong></div>
+              <div class="fact"><span>زبان سایت</span><strong>فارسی</strong></div>
+              <div class="fact"><span>وضعیت</span><strong>در حال ساختن و یادگیری</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-head"><div><h2>ارتباط با من</h2><p>راه‌های ارتباطی واقعی خودت را اینجا قرار بده.</p></div></div>
+        <div class="contact-box">
+          <h3>برای گفت‌وگو یا همکاری</h3>
+          <p>اگر درباره یکی از نوشته‌ها، پروژه‌ها یا موضوعات فنی پرسشی داری، از یکی از راه‌های زیر استفاده کن. نشانی‌ها در این قالب نمونه هستند و باید با اطلاعات خودت جایگزین شوند.</p>
+          <div class="contact-links">
+            <a class="btn primary" href="mailto:your.email@example.com">✉ ارسال ایمیل</a>
+            <a class="btn secondary" href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer><span>© <span id="year"></span> امیرعلی — وب‌سایت شخصی</span><span>ساخته‌شده با HTML، CSS و JavaScript</span></footer>
+  </main>
+</div>
+<script>
+const body = document.body;
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  themeToggle.setAttribute('aria-label', isLight ? 'فعال‌کردن پوسته تاریک' : 'فعال‌کردن پوسته روشن');
+});
+const search = document.getElementById('search');
+const posts = [...document.querySelectorAll('.post')];
+const emptyState = document.getElementById('emptyState');
+const postCount = document.getElementById('postCount');
+function filterPosts(){
+  const query = search.value.trim().toLocaleLowerCase('fa');
+  let visible = 0;
+  posts.forEach(post => {
+    const text = (post.innerText + ' ' + post.dataset.search).toLocaleLowerCase('fa');
+    const match = text.includes(query);
+    post.style.display = match ? 'grid' : 'none';
+    if(match) visible++;
+  });
+  emptyState.style.display = visible ? 'none' : 'block';
+  postCount.textContent = `${visible} نوشته`;
+}
+search.addEventListener('input', filterPosts);
+document.getElementById('year').textContent = new Intl.DateTimeFormat('fa-IR-u-ca-gregory',{year:'numeric'}).format(new Date());
+const navLinks = [...document.querySelectorAll('.nav a')];
+navLinks.forEach(link => link.addEventListener('click', () => {
+  navLinks.forEach(item => item.classList.remove('active'));
+  link.classList.add('active');
+}));
+</script>
+</body>
+</html>
